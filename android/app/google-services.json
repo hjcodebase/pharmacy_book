@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "574268837270",
+    "project_id": "dev-pharma-1996d",
+    "storage_bucket": "dev-pharma-1996d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574268837270:android:a79b103b6137b1e6d6a1b7",
+        "android_client_info": {
+          "package_name": "com.example.med_x"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_kAbZjpDC9aLijBM6b33zUldUAoRWTAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

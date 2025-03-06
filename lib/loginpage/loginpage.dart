@@ -1,34 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:med_x/firebase/firebaseauth.dart';
+import 'package:med_x/firebase/stocks/stocks_lists.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
 
   LoginPage({super.key});
-
-  void _loginWithGoogle(BuildContext context) {
-    // Placeholder for Firebase Google Sign-In
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Google Sign-In Coming Soon!')),
-    );
-    // After Firebase setup, navigate to HomePage here
-    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => HomePage()));
-  }
-
-  void _loginWithEmail(BuildContext context) {
-    final email = emailController.text.trim();
-    if (email.isNotEmpty && email.contains('@gmail.com')) {
-      // Placeholder for Firebase Email Auth
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Email Login Coming Soon!')),
-      );
-      // After Firebase setup, navigate to HomePage here
-      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => HomePage()));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please enter a valid Gmail address')),
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -76,7 +54,22 @@ class LoginPage extends StatelessWidget {
 
                   // Google Sign-In Button
                   ElevatedButton.icon(
-                    onPressed: () => _loginWithGoogle(context),
+                    onPressed: () async {
+                      User? user = await LoginAuth().signInUser();
+
+                      if (user != null) {
+                        print("Login successful: ${user.displayName}");
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return StockListScreen();
+                          },
+                        ));
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Login Failed $user")),
+                        );
+                      }
+                    },
                     icon: Icon(Icons.login, size: 24),
                     label: Text('Continue with Google'),
                     style: ElevatedButton.styleFrom(
@@ -114,7 +107,7 @@ class LoginPage extends StatelessWidget {
 
                   // Email Login Button
                   ElevatedButton(
-                    onPressed: () => _loginWithEmail(context),
+                    onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       padding:
                           EdgeInsets.symmetric(vertical: 15, horizontal: 40),
