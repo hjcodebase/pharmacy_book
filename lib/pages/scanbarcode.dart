@@ -68,6 +68,8 @@
 //     }
 //   }
 
+// ignore_for_file: use_build_context_synchronously
+
 //   @override
 //   Widget build(BuildContext context) => Scaffold(
 //         appBar: AppBar(
@@ -106,13 +108,14 @@ import 'package:barcode_scan2/barcode_scan2.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:med_x/generate_bill.dart';
+import 'package:med_x/pages/generate_bill.dart';
 import 'package:vibration/vibration.dart';
 
 class BarcodeScannerPage extends StatefulWidget {
   const BarcodeScannerPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _BarcodeScannerPageState createState() => _BarcodeScannerPageState();
 }
 
@@ -147,6 +150,8 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
           if (patientName != null) {
             // Move to bill page with the first medicine
             Navigator.push(
+              // ignore: duplicate_ignore
+              // ignore: use_build_context_synchronously
               context,
               MaterialPageRoute(
                 builder: (_) => BillGenerationPage(

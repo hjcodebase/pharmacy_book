@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:med_x/firebase/firebaseauth.dart';
-import 'package:med_x/firebase/stocks/stocks_lists.dart';
+import 'package:med_x/FirebaseDB/login_firebase.dart';
+import 'package:med_x/pages/stocks_lists.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();

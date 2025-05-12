@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:med_x/firebase/stocks/firestore_data.dart';
-import 'package:med_x/firebase/stocks/stocks_add.dart';
-import 'package:med_x/scanbarcode.dart';
+import 'package:med_x/FirebaseDB/firestore_data.dart';
+import 'package:med_x/pages/scanbarcode.dart';
 
 class StockListScreen extends StatefulWidget {
   const StockListScreen({super.key});
@@ -20,7 +19,6 @@ class _StockListScreenState extends State<StockListScreen> {
   DateTime? filterPurchaseMonth;
   int ExpiryLimit = 0;
 
-  @override
   // void initState() {
   //   super.initState();
   //   // filteredItems = stockItems;
@@ -286,15 +284,6 @@ class _StockListScreenState extends State<StockListScreen> {
                   }),
             ),
           ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () async {
-            final newStock = await Navigator.push(
-                context, MaterialPageRoute(builder: (_) => AddStockScreen()));
-            //  if (newStock != null) _addStock(newStock);
-          },
-          backgroundColor: Color(0xFF2196F3),
-          child: Icon(Icons.add),
         ),
       );
 }
